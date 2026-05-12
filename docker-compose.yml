@@ -1,0 +1,33 @@
+services:
+  gs:
+    image: gaussian-splatting:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gs
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility,video,display
+      - __NV_PRIME_RENDER_OFFLOAD=1
+      - __GLX_VENDOR_LIBRARY_NAME=nvidia
+      - __VK_LAYER_NV_optimus=NVIDIA_only
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      #- ${HOME}/INDEX/camera_data:/development/camera_data
+      #- ${HOME}/INDEX/output:/development/gaussian-splatting/output
+      #- ${HOME}/INDEX/index-backend:/development/index-backend
+      #- ${HOME}/INDEX/index-interface:/development/index-interface
+      #- ${HOME}/INDEX/3d_recon_deep:/development/3d_recon_deep
+    devices:
+      - /dev/dri:/dev/dri
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
