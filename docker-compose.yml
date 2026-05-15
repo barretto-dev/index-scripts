@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: gs
+    entrypoint: ["/entrypoint.sh"]
     stdin_open: true
     tty: true
     network_mode: "host"
@@ -17,11 +18,11 @@ services:
       - __VK_LAYER_NV_optimus=NVIDIA_only
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      #- ${HOME}/INDEX/camera_data:/development/camera_data
+      - ./entrypoint.sh:/entrypoint.sh
       #- ${HOME}/INDEX/output:/development/gaussian-splatting/output
       #- ${HOME}/INDEX/index-backend:/development/index-backend
       #- ${HOME}/INDEX/index-interface:/development/index-interface
-      #- ${HOME}/INDEX/3d_recon_deep:/development/3d_recon_deep
+      #- ${HOME}/INDEX/index-scripts:/development/index-scripts
     devices:
       - /dev/dri:/dev/dri
     deploy:
