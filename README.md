@@ -2,6 +2,13 @@
 
 This repository contains all necessary to install and execute in your machine the interface to visualize drone's camera, show a realtime pointcloud and build 3D reconstruction using gaussian splatting algorithm.
 
+[1 - Requirements](#1---requirements)
+[2 - Installation](#2---installation)
+[3 - Access Interface](#3---access-interface)
+[4 - Test without camera](#4---test-without-camera)
+[5 - Using camera](#5---using-camera)
+
+
 # 1 - Requirements
 
 - Ubuntu
