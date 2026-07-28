@@ -147,7 +147,7 @@ RUN cd /development/3d_recon_deep && \
 
 RUN cd /development && \
     git clone https://github.com/barretto-dev/index-scripts.git && \
-    cd index-scripts/videostream && \
+    cd index-scripts/videostream/rtsp && \
     chmod +x mediamtx && \
     pip install websockets
 
